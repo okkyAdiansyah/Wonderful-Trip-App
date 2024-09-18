@@ -8,7 +8,7 @@ import { NavComponent } from '@/components/Nav';
 import Link from 'next/link';
 
 const Navbar = () => {
-  const [screen, setScreen] = useState(1024);
+  const [screen, setScreen] = useState(500);
   
   useEffect(() => {
     let screenSize = window.innerWidth;

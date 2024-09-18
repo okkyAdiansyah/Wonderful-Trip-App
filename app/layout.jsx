@@ -13,7 +13,9 @@ const RootLayout = ({children}) => {
     <html lang='en'>
         <body className='h-screen overflow-y-hidden'>
           <Navbar />
+          <main>
             {children}
+          </main>
         </body>
     </html>
   )
