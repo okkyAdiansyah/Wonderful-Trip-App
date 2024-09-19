@@ -11,9 +11,9 @@ export const metadata = {
 const RootLayout = ({children}) => {
   return (
     <html lang='en'>
-        <body className='h-screen overflow-y-hidden'>
+        <body className='w-full h-screen flex flex-col overflow-hidden'>
           <Navbar />
-          <main>
+          <main className='h-full overflow-y-auto'>
             {children}
           </main>
         </body>
