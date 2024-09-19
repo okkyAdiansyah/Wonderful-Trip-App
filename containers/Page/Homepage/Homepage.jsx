@@ -3,12 +3,12 @@
 import React from 'react';
 import { SwiperSlide } from 'swiper/react';
 import Culture from '@/public/Culture.webp';
-import { Card } from '@/components/Card';
 import 'swiper/css';
 import Slider from '@/modules/Slider/Slider';
 import SectionTitle from '@/components/SectionTitle/SectionTitle';
 import useResponsive from '@/hooks/useResponsive';
 import SliderCard from '@/modules/Slider/SliderCard/SliderCard';
+import DestinationCard from '@/modules/Destination/DestinationCard/DestinationCard';
 
 const Homepage = () => {
   const { screen } = useResponsive();
@@ -99,51 +99,35 @@ const Homepage = () => {
           screen={screen}
         >
           <SwiperSlide>
-            <Card.MainCard 
+            <DestinationCard
               thumbSrc={Culture}
-              thumbAlt={'Culture'}
+              thumbAlt={'Alt'}
+              screen={screen}
+              destinationLink={'/'}
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Card.MainCard 
+            <DestinationCard
               thumbSrc={Culture}
-              thumbAlt={'Culture'}
+              thumbAlt={'Alt'}
+              screen={screen}
+              destinationLink={'/'}
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Card.MainCard 
+            <DestinationCard
               thumbSrc={Culture}
-              thumbAlt={'Culture'}
+              thumbAlt={'Alt'}
+              screen={screen}
+              destinationLink={'/'}
             />
           </SwiperSlide>
           <SwiperSlide>
-            <Card.MainCard 
+            <DestinationCard
               thumbSrc={Culture}
-              thumbAlt={'Culture'}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card.MainCard 
-              thumbSrc={Culture}
-              thumbAlt={'Culture'}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card.MainCard 
-              thumbSrc={Culture}
-              thumbAlt={'Culture'}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card.MainCard 
-              thumbSrc={Culture}
-              thumbAlt={'Culture'}
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card.MainCard 
-              thumbSrc={Culture}
-              thumbAlt={'Culture'}
+              thumbAlt={'Alt'}
+              screen={screen}
+              destinationLink={'/'}
             />
           </SwiperSlide>
         </Slider>
