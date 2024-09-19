@@ -13,7 +13,7 @@ const RootLayout = ({children}) => {
     <html lang='en'>
         <body className='w-full h-screen flex flex-col overflow-hidden'>
           <Navbar />
-          <main className='h-full overflow-y-auto'>
+          <main className='h-full overflow-y-auto bg-primaryColor'>
             {children}
           </main>
         </body>
