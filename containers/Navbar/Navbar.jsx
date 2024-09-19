@@ -1,25 +1,21 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import Logo from '@/public/wt_logo.png';
 import Image from 'next/image';
 import MobileNavContainer from '@/containers/Mobile/MobileNavContainer/MobileNavContainer';
 import { Button } from '@/components/Button';
 import { NavComponent } from '@/components/Nav';
 import Link from 'next/link';
+import useResponsive from '@/hooks/useResponsive';
 
 const Navbar = () => {
-  const [screen, setScreen] = useState(500);
-  
-  useEffect(() => {
-    let screenSize = window.innerWidth;
-    setScreen(screenSize);
-
-  }, [screen]);
+  const { screen } = useResponsive();
 
   return (
     <nav className='w-full flex px-3 md:px-[42px] py-4 md:py-0 items-center justify-between bg-secondaryColor'>
       <div className='w-auto flex md:flex-row-reverse items-center gap-x-[6px] md:gap-x-3'>
-        {screen < 1024 ?        
+        {screen === 'mobile' ?        
           <MobileNavContainer /> : 
           <NavComponent.DesktopNav />
         }
@@ -40,7 +36,7 @@ const Navbar = () => {
         <Button.WithIcon
           href={'/search'}
         >
-          {screen < 1024 ?
+          {screen === 'mobile' ?
             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_162_126)">
               <rect width="24" height="24" transform="translate(0 0.5)" fill="#10111C"/>
