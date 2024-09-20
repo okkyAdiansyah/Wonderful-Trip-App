@@ -26,6 +26,7 @@ module.exports = {
       'text-light' : '#E8E9F5',
       'text-dark' : '#10111C',
       'text-placeholder' : '#555555',
+      'link' : '#273DFF'
     },
     extend: {
       colors: {
@@ -35,6 +36,9 @@ module.exports = {
       spacing : {
         'mobileNav' : 'calc(42px + 32px)',
         'desktopNav' : 'calc(28px + 48px)'
+      },
+      backgroundImage : {
+        'auth-bg' : "url('.././public/bg-img.webp')"
       }
     },
   },

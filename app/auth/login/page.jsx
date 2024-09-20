@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import LoginPage from '@/containers/Page/AuthPage/LoginPage/LoginPage';
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <>
+      <LoginPage />
+    </>
   )
 }
 
