@@ -22,7 +22,7 @@ const LoginFormControl = () => {
         setFormData(prevState => ({...prevState, [name] : value}))
     }
 
-    const handleCheckbocChange = (e) => {
+    const handleCheckboxChange = (e) => {
         const { checked, name } = e.target;
         setFormData(prevState => ({...prevState, [name] : checked}))
     }
@@ -102,7 +102,7 @@ const LoginFormControl = () => {
                 required={true}
             />
             <Input.CheckboxInput 
-                onChange={handleCheckbocChange}
+                onChange={handleCheckboxChange}
                 name='rememberMe'
                 isChecked={formData.rememberMe}
             >
