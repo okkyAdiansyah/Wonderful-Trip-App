@@ -5,6 +5,8 @@ import useResponsive from '@/hooks/useResponsive';
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Button';
 import Link from 'next/link';
+import { Loading } from '@/components/Loading';
+import axios from 'axios';
 
 const SignupFormControl = () => {
     const [isAgreed, setIsAgreed] = useState(false);
@@ -14,6 +16,11 @@ const SignupFormControl = () => {
         email : '',
         password : '',
         policyAgreement : false
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState({
+        errorState : false,
+        errorMsg : ''
     });
     
     const { screen } = useResponsive();
@@ -42,19 +49,39 @@ const SignupFormControl = () => {
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        // setIsLoading(!isLoading);
+        setIsLoading(!isLoading);
 
-        let res = await fetch('/api/v1/auth/sign-up/user', {
-            method: 'post',
-            body: JSON.stringify(formData)
-        });
-        
-        console.log(res)
+        await axios({
+            baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+            url:'/api/v1/auth/sign-up/user',
+            data: formData,
+            method: 'post'
+        })
+        .then(res => {
+            setIsLoading(false);
+        })
+        .catch(error => {
+            setError(prevState => ({...prevState, errorState : true, errorMsg: error.response.data.message}));
+        })
+    }
+
+    const handleLoadingReset = () => {
+        setIsLoading(!isLoading);
+        setError(prevState => ({...prevState, errorState : false, errorMsg: ''}));
     }
 
 
   return (
     <>
+        {isLoading &&
+            <Loading.AuthLoading 
+                message={'Registering...'}
+                onClick={handleLoadingReset}
+                isFailed={error.errorState}
+                errorHeader={'Registration Failed'}
+                errorMsg={error.errorMsg}
+            />
+        }
         <form className='w-full md:w-1/2 flex flex-col px-5 md:px-8 py-8 gap-y-6 md:gap-y-8 bg-secondaryColor rounded-xl'
             method='post'
             onSubmit={handleFormSubmit}
