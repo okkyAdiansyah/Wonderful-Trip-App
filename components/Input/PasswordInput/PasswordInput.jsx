@@ -11,7 +11,7 @@ const PasswordInput = ({screen, name, placeholder, label, required, onChange, th
   return (
     <div className='w-full flex flex-col gap-y-2 md:gap-y-4 items-start'>
       <label htmlFor={name} className={`font-secondary font-normal text-sm md:text-base ${theme === 'dark' ? 'text-text-light' : 'text-text-dark'}`} >{label}</label>
-      <div className={`w-full flex items-center px-3 md:px-4 py-[8px] md:py-3 gap-x-[10px] bg-inputBg border-solid border-2 ${isError ? 'border-r-alert' : 'border-transparent'} rounded-full`}>
+      <div className={`w-full flex items-center px-3 md:px-4 py-[8px] md:py-3 gap-x-[10px] bg-inputBg border-solid border-2 ${isError ? 'border-alert' : 'border-transparent'} rounded-full`}>
         {screen === 'mobile' ?
           <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.4999 5.16671H9.91658V4.00004C9.91658 2.39004 8.60992 1.08337 6.99992 1.08337C5.38992 1.08337 4.08325 2.39004 4.08325 4.00004V5.16671H3.49992C2.85825 5.16671 2.33325 5.69171 2.33325 6.33337V12.1667C2.33325 12.8084 2.85825 13.3334 3.49992 13.3334H10.4999C11.1416 13.3334 11.6666 12.8084 11.6666 12.1667V6.33337C11.6666 5.69171 11.1416 5.16671 10.4999 5.16671ZM6.99992 10.4167C6.35825 10.4167 5.83325 9.89171 5.83325 9.25004C5.83325 8.60837 6.35825 8.08337 6.99992 8.08337C7.64159 8.08337 8.16658 8.60837 8.16658 9.25004C8.16658 9.89171 7.64159 10.4167 6.99992 10.4167ZM8.80825 5.16671H5.19159V4.00004C5.19159 3.00254 6.00242 2.19171 6.99992 2.19171C7.99742 2.19171 8.80825 3.00254 8.80825 4.00004V5.16671Z" fill="#555555"/>
@@ -36,7 +36,7 @@ const PasswordInput = ({screen, name, placeholder, label, required, onChange, th
         />
       </div>
       {isError && 
-        <p className='font-secondary font-medium text-xtext-alert ml-3'>
+        <p className='font-secondary font-medium text-alert ml-3'>
           * {errorMsg}
         </p>
       }
