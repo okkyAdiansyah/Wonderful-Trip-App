@@ -30,10 +30,6 @@ export async function POST(req, res) {
             })
         }
 
-        return new Response('Login Success', {
-            status: 200
-        })
-    } return new Response(response.data.message, {
-        status: 400
-    })
+        return Response.json({message : 'Login Success'}, {status: 200});
+    } return Response.json({message: response.data.message}, {status: 400});
 }
