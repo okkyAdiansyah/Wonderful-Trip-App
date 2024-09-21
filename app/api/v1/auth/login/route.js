@@ -19,7 +19,17 @@ export async function POST(req, res) {
     .catch(error => error.response.data)
 
     if(response.success){
-        cookiesStore.set('token', response.data.jwt)
+        cookiesStore.set('token', response.data.jwt, {
+            maxAge: 60 * 60 * 24,
+            sameSite: 'strict',
+        })
+        if(formData.rememberMe){
+            cookiesStore.set('remember-token', response.data.jwt, {
+                maxAge: 60 * 60 * 24 * 30,
+                sameSite: 'strict'
+            })
+        }
+
         return new Response('Login Success', {
             status: 200
         })
