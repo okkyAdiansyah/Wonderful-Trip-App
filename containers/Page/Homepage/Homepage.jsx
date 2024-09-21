@@ -13,8 +13,6 @@ import DestinationCard from '@/modules/Destination/DestinationCard/DestinationCa
 const Homepage = () => {
   const { screen } = useResponsive();
 
-  console.log(screen);
-
   return (
     <>
       {/* Attraction Section */}
