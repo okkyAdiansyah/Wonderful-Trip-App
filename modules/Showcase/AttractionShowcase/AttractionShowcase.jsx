@@ -45,6 +45,7 @@ const AttractionShowcase = ({children}) => {
         onMouseDown={handleDragStart}
         onMouseUp={handleDragEnd}
         onMouseMove={handleDrag}
+        onMouseLeave={handleDragEnd}
         >
             {children}
         </div>
