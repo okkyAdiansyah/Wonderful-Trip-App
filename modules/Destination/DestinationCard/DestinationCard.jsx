@@ -1,10 +1,13 @@
+'use client';
 import React from 'react';
 import { Card } from '@/components/Card';
 import { Counter } from '@/components/Counter';
 import RecommendationButton from '../StatefulButton/RecommendationButton';
 import Link from 'next/link';
+import useResponsive from '@/hooks/useResponsive';
 
-const DestinationCard = ({thumbSrc, thumbAlt, cat, screen, destinationLink, locationLink}) => {
+const DestinationCard = ({thumbSrc, thumbAlt, cat, destinationLink, locationLink}) => {
+  const { screen } = useResponsive();
   return (
     <div className='w-full flex flex-col items-start justify-start'
       href={destinationLink}
