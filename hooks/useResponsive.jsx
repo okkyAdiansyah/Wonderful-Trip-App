@@ -1,36 +1,29 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const useResponsive = () => {
     const [screen, setScreen] = useState('');
-    const [screenSize, setScreenSize] = useState();
+    const debounceResize = useRef(null);
 
     const handleResize = () => {
-        setScreenSize(window.innerWidth);
-        if(screenSize < 768){
-            setScreen('mobile')
-        }else{
-            setScreen('desktop')
-        }
+        if(debounceResize.current) clearTimeout(debounceResize.current);
+
+        debounceResize.current = setTimeout(() => {
+            let currentWidth = window.innerWidth;
+            setScreen(currentWidth < 768 ? 'mobile' : 'desktop');
+        }, 500);
     }
 
     useEffect(() => {
-        if(!screenSize){
-            setScreenSize(window.innerWidth);
-        }
-
-        if(screenSize < 768){
-            setScreen('mobile')
-        }else{
-            setScreen('desktop')
-        }
-
+        let currentWidth = window.innerWidth;
+        setScreen(currentWidth < 768 ? 'mobile' : 'desktop');
         window.addEventListener('resize', handleResize);
 
         return () => {
-            window.removeEventListener('resize', handleResize)
+            window.removeEventListener('resize', handleResize);
+            if(debounceResize.current) clearTimeout(debounceResize.current)
         }
-    }, [screenSize])
+    }, [])
 
     return { screen }
 }
